@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="autoShutdownGUI.MainPage"
+             BackgroundColor="Wheat"
+             >
+
+    <ScrollView>
+        <VerticalStackLayout
+            Spacing="15"
+            Padding="30,5"
+            VerticalOptions="Start"
+            BackgroundColor="Wheat"
+            >
+            <Label
+                Text="Shutdown App"
+                FontSize="15"
+                HorizontalOptions="Center" 
+                TextColor="Black"
+                BackgroundColor="Wheat"
+                />
+
+            <Entry
+                x:Name="UserTimeEntry"
+                WidthRequest="130"
+                BackgroundColor="White"              
+                Keyboard="Numeric"
+                TextColor="Black"  
+                Placeholder="Enter time here: "
+                />
+
+            <Button
+                x:Name="ShutdownBtn"
+                Text="Shutdown"
+                SemanticProperties.Hint="Triggers shutdown sequence"
+                Clicked="OnShutdownClicked"
+                HorizontalOptions="Center"
+                BackgroundColor="LightPink"
+                TextColor="Black"
+                />
+
+            <Button
+                x:Name="RestartBtn"
+                Text="Restart"
+                SemanticProperties.Hint="Triggers restart sequence"
+                Clicked="OnRestartClicked"
+                HorizontalOptions="Center"
+                BackgroundColor="LightPink"
+                TextColor="Black"
+                />
+
+            <Button
+                x:Name="CancelBtn"
+                Text="Cancel Selected Event"
+                SemanticProperties.Hint="Triggers cancel sequence"
+                Clicked="OnCancelClicked"
+                HorizontalOptions="Center" 
+                BackgroundColor="LightPink"
+                TextColor="Black"
+                />
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
