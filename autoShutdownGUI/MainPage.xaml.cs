@@ -14,28 +14,44 @@ namespace autoShutdownGUI
 
         private void OnShutdownClicked(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(UserTimeEntry.Text))
+            {
+                DisplayAlert("Invalid Input", "Please enter a value for the shutdown time.", "OK");
+                return;
+            }
+
             if (int.TryParse(UserTimeEntry.Text, out var minutes))
             {
                 var seconds = minutes * 60;
                 Functions.Shutdown(seconds);
+
+                DisplayAlert($"Your Computer will be shut down after {minutes} minutes", "Press 'Cancel Selected Event' button to cancel process", "OK");
+                return;
+
             }
             else
             {
-                // Handle the case where the input is not a valid integer
                 DisplayAlert("Invalid Input", "Please enter a valid integer for the shutdown time.", "OK");
             }
         }
 
         private void OnRestartClicked(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(UserTimeEntry.Text))
+            {
+                DisplayAlert("Invalid Input", "Please enter a value for the restart time.", "OK");
+                return;
+            }
+
             if (int.TryParse(UserTimeEntry.Text, out var minutes))
             {
                 var seconds = minutes * 60;
                 Functions.Restart(seconds);
+                DisplayAlert($"Your Computer Will Restart After {minutes} Minutes", "Press 'Cancel Selected Event' button to cancel process", "OK");
+                return;
             }
             else
             {
-                // Handle the case where the input is not a valid integer
                 DisplayAlert("Invalid Input", "Please enter a valid integer for the restart time.", "OK");
             }
         }
@@ -43,9 +59,10 @@ namespace autoShutdownGUI
         private void OnCancelClicked(object sender, EventArgs e)
         {
             Functions.Cancel();
+            DisplayAlert("Process Cancelled", "Process cancelled successfully", "OK");
+            return;
         }
 
-        // Functions class
         public static class Functions
         {
             public static void Shutdown(int time)
@@ -59,7 +76,6 @@ namespace autoShutdownGUI
                     Console.WriteLine($"Error during shutdown: {ex.Message}");
                 }
             }
-
             public static void Restart(int time) 
             {
                 try
@@ -71,7 +87,6 @@ namespace autoShutdownGUI
                     Console.WriteLine($"Error during restart: {ex.Message}");
                 }
             }
-
             public static void Cancel()
             {
                 try

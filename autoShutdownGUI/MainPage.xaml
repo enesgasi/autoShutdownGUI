@@ -1,64 +1,59 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="autoShutdownGUI.MainPage"
-             BackgroundColor="Wheat"
-             >
+﻿<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="autoShutdownGUI.MainPage"
+    BackgroundColor="#F4F4F4"
+    Title="Shutdown Timer">
 
     <ScrollView>
-        <VerticalStackLayout
-            Spacing="15"
-            Padding="30,5"
-            VerticalOptions="Start"
-            BackgroundColor="Wheat"
-            >
-            <Label
-                Text="Shutdown App"
-                FontSize="15"
-                HorizontalOptions="Center" 
-                TextColor="Black"
-                BackgroundColor="Wheat"
-                />
+        <StackLayout Padding="30,15" VerticalOptions="Start">
 
             <Entry
                 x:Name="UserTimeEntry"
-                WidthRequest="130"
-                BackgroundColor="White"              
+                WidthRequest="200"
+                BackgroundColor="#FFFFFF"
                 Keyboard="Numeric"
-                TextColor="Black"  
-                Placeholder="Enter time here: "
-                />
-
-            <Button
-                x:Name="ShutdownBtn"
-                Text="Shutdown"
-                SemanticProperties.Hint="Triggers shutdown sequence"
-                Clicked="OnShutdownClicked"
+                TextColor="#333333"
+                Placeholder="Enter time here"
                 HorizontalOptions="Center"
-                BackgroundColor="LightPink"
-                TextColor="Black"
-                />
+                VerticalOptions="CenterAndExpand"
+                Margin="0,0,0,20" />
 
-            <Button
-                x:Name="RestartBtn"
-                Text="Restart"
-                SemanticProperties.Hint="Triggers restart sequence"
-                Clicked="OnRestartClicked"
+            <StackLayout
+                Orientation="Horizontal"
                 HorizontalOptions="Center"
-                BackgroundColor="LightPink"
-                TextColor="Black"
-                />
+                Spacing="15"
+                VerticalOptions="Center">
+
+                <Button
+                    x:Name="ShutdownBtn"
+                    Text="Shutdown"
+                    WidthRequest="120"
+                    BackgroundColor="SlateBlue"
+                    TextColor="#FFFFFF"
+                    Clicked="OnShutdownClicked" />
+
+                <Button
+                    x:Name="RestartBtn"
+                    Text="Restart"
+                    WidthRequest="120"
+                    BackgroundColor="SlateBlue"
+                    TextColor="#FFFFFF"
+                    Clicked="OnRestartClicked" />
+                
+            </StackLayout>
 
             <Button
                 x:Name="CancelBtn"
                 Text="Cancel Selected Event"
-                SemanticProperties.Hint="Triggers cancel sequence"
+                WidthRequest="200"
+                BackgroundColor="SlateBlue"
+                TextColor="#FFFFFF"
                 Clicked="OnCancelClicked"
-                HorizontalOptions="Center" 
-                BackgroundColor="LightPink"
-                TextColor="Black"
-                />
-        </VerticalStackLayout>
-    </ScrollView>
+                HorizontalOptions="Center"
+                Margin="0,20,0,0" />
+            
+        </StackLayout>
 
+    </ScrollView>
 </ContentPage>
